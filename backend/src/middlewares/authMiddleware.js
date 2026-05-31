@@ -10,6 +10,7 @@ exports.authenticate = (req, res, next) => {
     
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
+    console.log(' Authenticated user:', decoded); // Debug
     next();
   } catch (error) {
     return res.status(401).json({ message: 'Invalid token' });
@@ -17,8 +18,13 @@ exports.authenticate = (req, res, next) => {
 };
 
 exports.isHR = (req, res, next) => {
+  console.log(' Checking HR role:', req.user.role); // Debug
+  
   if (req.user.role !== 'hr' && req.user.role !== 'admin') {
+    console.log(' Access denied - Role:', req.user.role);
     return res.status(403).json({ message: 'Access denied' });
   }
+  
+  console.log(' HR/Admin access granted');
   next();
 };

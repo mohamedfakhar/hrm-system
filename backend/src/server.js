@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
+const employeeRoutes = require('./routes/employeeRoutes');
 
 const db = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
@@ -22,10 +23,18 @@ if (process.env.NODE_ENV === "dev") {
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use('/api/employees', employeeRoutes);
 
 // Test
-app.get("/", (req, res) => {
-  res.json({ message: "API Running" });
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'HRM API is running!',
+    version: '1.0.0',
+    endpoints: {
+      auth: '/api/auth',
+      employees: '/api/employees'
+    }
+  });
 });
 
 // Server
