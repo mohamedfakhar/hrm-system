@@ -2,9 +2,9 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
-const employeeRoutes = require('./routes/employeeRoutes');
 
 const db = require("./config/db");
+db();
 const authRoutes = require("./routes/authRoutes");
 
 const app = express();
@@ -23,7 +23,6 @@ if (process.env.NODE_ENV === "dev") {
 
 // Routes
 app.use("/api/auth", authRoutes);
-app.use('/api/employees', employeeRoutes);
 
 // Test
 app.get('/', (req, res) => {
@@ -32,7 +31,6 @@ app.get('/', (req, res) => {
     version: '1.0.0',
     endpoints: {
       auth: '/api/auth',
-      employees: '/api/employees'
     }
   });
 });
