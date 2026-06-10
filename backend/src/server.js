@@ -6,6 +6,7 @@ const cors = require("cors");
 const db = require("./config/db");
 db();
 const authRoutes = require("./routes/authRoutes");
+const employeeRoutes = require('./routes/employeeRoutes');
 
 const app = express();
 
@@ -23,6 +24,7 @@ if (process.env.NODE_ENV === "dev") {
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use('/api/employees', employeeRoutes);
 
 // Test
 app.get('/', (req, res) => {
