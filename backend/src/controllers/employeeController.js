@@ -53,25 +53,25 @@ exports.getMyProfile = async (req, res) => {
 exports.createEmployee = async (req, res) => {
   try {
     const { email, password, full_name, job_role, department,
-            basic_salary, hire_date, phone, address } = req.body;
+       basic_salary, hire_date, phone, address } = req.body;
 
-    // 1. Check email not used before
+    //  Check email not used before
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ success: false, message: 'Email already in use' });
     }
 
-    // 2. Hash the password
+    //  Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // 3. Create the user account
+    // Create the user account
     const user = await User.create({
       email,
       password: hashedPassword,
       role: 'employee'
     });
 
-    // 4. Create the employee profile linked to the user
+    //  Create the employee profile linked to the user
     const employee = await Employee.create({
       user_id: user._id,
       full_name,

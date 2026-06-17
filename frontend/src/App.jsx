@@ -1,23 +1,61 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
-import Login    from './pages/auth/Login';
-import Register from './pages/auth/Register';
+import { ProtectedRoute, HRRoute } from './routes/ProtectedRoute';
+
+import Login from './pages/auth/Login';
+import AddEmployee from './pages/hr/AddEmployee';
 
 export default function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          {/* Default: redirect to login */}
+
+          {/* Default redirect */}
           <Route path="/" element={<Navigate to="/login" />} />
 
-          {/* Auth pages */}
-          <Route path="/login"    element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          {/* Public Routes */}
+          <Route path="/login" element={<Login />} />
 
-          {/* Dashboards  */}
-          <Route path="/employee/dashboard" element={<div>Employee Dashboard - Coming Soon</div>} />
-          <Route path="/hr/dashboard" element={<div>HR Dashboard - Coming Soon</div>} />
+          {/* HR Routes */}
+          <Route
+            path="/hr/add-employee"
+            element={
+              <HRRoute>
+                <AddEmployee />
+              </HRRoute>
+            }
+          />
+          <Route
+            path="/hr/dashboard"
+            element={
+              <HRRoute>
+                <div>
+                  HR Dashboard
+                  <br />
+                  <button
+                    onClick={() => window.location.href = '/hr/add-employee'}
+                    className="text-blue-600 underline"
+                  >
+                    Add Employee
+                  </button>
+                </div>
+              </HRRoute>
+            }
+          />
+
+          {/* Employee Routes */}
+          <Route
+            path="/employee/dashboard"
+            element={
+              <ProtectedRoute>
+                <div>Employee Dashboard</div>
+              </ProtectedRoute>
+            }
+          />
+
+          <Route path="*" element={<Navigate to="/login" />} />
+
         </Routes>
       </BrowserRouter>
     </AuthProvider>

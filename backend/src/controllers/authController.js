@@ -2,6 +2,11 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
+const {
+  generateAccessToken,
+  generateRefreshToken
+} = require("../utils/tokens");
+
 // Register
 exports.register = async (req, res) => {
   try {
@@ -60,21 +65,76 @@ exports.login = async (req, res) => {
 
     // Update last login
     user.last_login = new Date();
+    //  generate tokens
+    const accessToken = generateAccessToken(user);
+    const refreshToken = generateRefreshToken(user);
+
+    // store refresh token in DB
+    user.refreshToken = refreshToken;
     await user.save();
 
-    // Generate token
-    const token = jwt.sign(
-      { id: user._id, email: user.email, role: user.role },process.env.JWT_SECRET,{ expiresIn: '1d' }
-    );
 
-    res.json({
+    return res.json({
       success: true,
-      message: 'Login successful',
-      token,
-      user: { id: user._id, email: user.email, role: user.role }
+      message: "Login successful",
+
+      accessToken,
+      refreshToken,
+
+      user: {
+        id: user._id,
+        email: user.email,
+        role: user.role
+      }
     });
+
   } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+    return res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+exports.refreshToken = async (req, res) => {
+  try {
+    const { refreshToken } = req.body;
+
+    if (!refreshToken) {
+      return res.status(401).json({ message: "No refresh token" });
+    }
+
+    const jwt = require("jsonwebtoken");
+    const User = require("../models/User");
+
+    const decoded = jwt.verify(refreshToken, process.env.REFRESH_SECRET);
+
+    const user = await User.findById(decoded.id);
+
+    if (!user || user.refreshToken !== refreshToken) {
+      return res.status(403).json({ message: "Invalid refresh token" });
+    }
+
+    const {
+      generateAccessToken,
+      generateRefreshToken
+    } = require("../utils/tokens");
+
+    const newAccessToken = generateAccessToken(user);
+    const newRefreshToken = generateRefreshToken(user);
+
+    user.refreshToken = newRefreshToken;
+    await user.save();
+
+    return res.json({
+      accessToken: newAccessToken,
+      refreshToken: newRefreshToken
+    });
+
+  } catch (err) {
+    return res.status(401).json({
+      message: "Token expired"
+    });
   }
 };
 

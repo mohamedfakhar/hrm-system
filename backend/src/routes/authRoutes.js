@@ -6,10 +6,9 @@ const { authenticate } = require('../middlewares/authMiddleware');
 // Public routes
 router.post('/register', authController.register);
 router.post('/login', authController.login);
+router.post("/refresh-token", authController.refreshToken);
 
 // Protected routes
-router.get('/me', authenticate, authController.getMe);
-
 router.get('/test-role', authenticate, (req, res) => {
   res.json({
     success: true,
