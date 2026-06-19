@@ -1,15 +1,18 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
-import { ProtectedRoute, HRRoute } from './routes/ProtectedRoute';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import { ProtectedRoute, HRRoute } from "./routes/ProtectedRoute";
+import LandingPage from "./pages/LandingPage";
 
-import Login from './pages/auth/Login';
-import AddEmployee from './pages/hr/AddEmployee';
+import Login from "./pages/auth/Login";
+import AddEmployee from "./pages/hr/AddEmployee";
 
 export default function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<Login />} />
 
           {/* Default redirect */}
           <Route path="/" element={<Navigate to="/login" />} />
@@ -34,7 +37,7 @@ export default function App() {
                   HR Dashboard
                   <br />
                   <button
-                    onClick={() => window.location.href = '/hr/add-employee'}
+                    onClick={() => (window.location.href = "/hr/add-employee")}
                     className="text-blue-600 underline"
                   >
                     Add Employee
@@ -55,7 +58,6 @@ export default function App() {
           />
 
           <Route path="*" element={<Navigate to="/login" />} />
-
         </Routes>
       </BrowserRouter>
     </AuthProvider>
