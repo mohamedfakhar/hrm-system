@@ -1,0 +1,49 @@
+.navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.navbar-bell-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar-badge {
+  background-color: #ef4444;
+}
+
+.navbar-notif-dropdown {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-notif-header {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.navbar-notif-item {
+  border-bottom: 1px solid #f8fafc;
+}
+
+.navbar-notif-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.navbar-mark-all-btn {
+  background: none;
+  border: none;
+  color: #2563eb;
+  cursor: pointer;
+}
+
+.navbar-mark-all-btn:hover {
+  background-color: #f8fafc;
+}
+
+.navbar-avatar {
+  background-color: #2563eb;
+}

@@ -1,51 +1,57 @@
+import AnalyticsView from "../../assets/AnalyticsView.png";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import {
+  faChartLine,
+  faShieldHalved,
+  faChartPie,
+} from "@fortawesome/free-solid-svg-icons";
+
 const points = [
   {
-    icon: '⚡',
-    title: 'Real-Time Tracking',
-    desc: 'Monitor attendance, leaves, and salary status as they happen.',
+    icon: <FontAwesomeIcon icon={faChartLine} />,
+    title: "Real-time Tracking",
+    desc: "Monitor workforce productivity and attendance trends as they happen.",
   },
   {
-    icon: '🔒',
-    title: 'Role-Based Access',
-    desc: 'Employees see their own data. HR manages everything. Secure by design.',
+    icon: <FontAwesomeIcon icon={faShieldHalved} />,
+    title: "Role-based Access",
+    desc: "Secure your sensitive data with granular permissions and audit logs.",
   },
   {
-    icon: '📊',
-    title: 'Powerful Analytics',
-    desc: 'Auto-generated reports on attendance, deductions, and department costs.',
+    icon: <FontAwesomeIcon icon={faChartPie} />,
+    title: "Powerful Analytics",
+    desc: "Get automated reports on turnover, diversity, and department costs.",
   },
 ];
 
 export default function WhyUs() {
   return (
     <section className="why">
-      <div className="section-inner">
-        <p className="section-eyebrow">Unlock your team's</p>
-        <h2 className="section-title">true potential</h2>
-        <p className="section-sub">
-          More than spreadsheets and manual records. Get insights that drive smarter decisions.
-        </p>
+      <div className="why-container">
+        {/* IMAGE */}
+        <div className="why-image">
+          <img src={AnalyticsView} alt="" />
+        </div>
 
-        <div className="why-grid">
+        {/* CONTENT */}
+        <div className="why-content">
+          <h2>
+            Unlock your team's
+            <span> true potential</span>
+          </h2>
 
-          {/* Left: Chart visual */}
-          <div className="why-visual">
-            {/* IMAGE PLACEHOLDER: analytics chart */}
-            {/* <img src="/images/analytics.png" alt="analytics" className="why-img" /> */}
-            <div className="why-img-placeholder">
-              <div className="chart-bar" style={{ height: '60%' }} />
-              <div className="chart-bar" style={{ height: '85%' }} />
-              <div className="chart-bar chart-bar--accent" style={{ height: '100%' }} />
-              <div className="chart-bar" style={{ height: '70%' }} />
-              <div className="chart-bar" style={{ height: '90%' }} />
-            </div>
-          </div>
+          <p className="why-desc">
+            Move beyond spreadsheets and manual entries. Our platform provides
+            the insights you need to make better people decisions.
+          </p>
 
-          {/* Right: Points */}
           <div className="why-points">
             {points.map((point) => (
               <div className="why-point" key={point.title}>
                 <div className="why-icon">{point.icon}</div>
+
                 <div>
                   <h4>{point.title}</h4>
                   <p>{point.desc}</p>
@@ -53,7 +59,6 @@ export default function WhyUs() {
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </section>

@@ -1,0 +1,100 @@
+.sidebar {
+  background-color: #1e293b;
+}
+
+
+.sidebar-logo {
+  border-bottom: 1px solid #334155;
+}
+
+
+.sidebar-logo-text {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+
+/* Role Colors */
+
+.sidebar-role-badge {
+
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+
+}
+
+
+.role-admin {
+  color: #fbbf24;
+}
+
+
+.role-hr {
+  color: #34d399;
+}
+
+
+.role-employee {
+  color: #94a3b8;
+}
+
+
+
+
+.sidebar-link {
+
+  color: #94a3b8;
+  text-decoration: none;
+  transition: all 0.15s;
+
+}
+
+
+.sidebar-link:hover {
+
+  background-color: #334155;
+  color: #ffffff;
+
+}
+
+
+
+.sidebar-link-active {
+
+  background-color: #2563eb;
+  color: #ffffff;
+
+}
+
+
+
+
+.sidebar-logout-wrap {
+
+  border-top: 1px solid #334155;
+
+}
+
+
+
+.sidebar-logout-btn {
+
+  border: none;
+  background-color: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.15s;
+
+}
+
+
+
+.sidebar-logout-btn:hover {
+
+  background-color: #334155;
+  color: #ffffff;
+
+}

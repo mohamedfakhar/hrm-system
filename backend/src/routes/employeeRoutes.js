@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-
 const employeeController = require('../controllers/employeeController');
 const { authenticate, isHR, isAdmin } = require('../middlewares/authMiddleware');
+const { validateCreateEmployee, validateUpdateEmployee } = require('../validators/employeeValidator');
 
 // All routes need a valid token
 router.use(authenticate);

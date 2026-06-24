@@ -1,20 +1,18 @@
 const express = require('express');
-const router = express.Router();
+const router  = express.Router();
 const authController = require('../controllers/authController');
-const { authenticate } = require('../middlewares/authMiddleware');
-
+const { authenticate, isAdmin } = require('../middlewares/authMiddleware');
 // Public routes
 router.post('/register', authController.register);
-router.post('/login', authController.login);
-router.post("/refresh-token", authController.refreshToken);
+router.post('/login',  authController.login);
+router.post('/refresh', authController.refreshToken); 
+router.post('/logout',  authController.logout);    
+
+// Admin only 
+router.post('/add-hr', authenticate, isAdmin, authController.addHR);
 
 // Protected routes
-router.get('/test-role', authenticate, (req, res) => {
-  res.json({
-    success: true,
-    user: req.user,
-    message: `You are logged in as ${req.user.role}`
-  });
-});
-
+router.get('/me', authenticate, authController.getMe);
+console.log(authenticate);
+console.log(authController.getMe);
 module.exports = router;

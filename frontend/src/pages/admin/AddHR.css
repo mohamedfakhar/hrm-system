@@ -1,0 +1,164 @@
+.add-hr-page {
+
+  max-width: 480px;
+
+}
+
+
+
+.add-hr-title {
+
+  margin-bottom: 24px;
+  color: #1e293b;
+
+}
+
+
+
+.add-hr-form {
+
+
+  background-color: white;
+
+  padding: 24px;
+
+  border-radius: 12px;
+
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+
+}
+
+
+
+.form-field {
+
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+
+
+}
+
+
+
+.form-field label {
+
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  color: #374151;
+
+
+}
+
+
+
+.form-field input {
+
+
+  padding: 10px 12px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  outline: none;
+
+
+}
+
+
+
+.form-field input:focus {
+
+  border-color: #2563eb;
+
+}
+
+
+
+
+.create-btn {
+
+
+  padding: 12px;
+
+  background-color: #2563eb;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+
+}
+
+
+
+.create-btn:disabled {
+
+  opacity: 0.6;
+
+}
+
+
+
+
+.error-box {
+
+
+  background-color: #fee2e2;
+
+  color: #991b1b;
+
+  padding: 12px;
+
+  border-radius: 8px;
+
+  margin-bottom: 16px;
+
+  font-size: 14px;
+
+
+}
+
+
+
+
+.success-box {
+
+
+  background-color: #dcfce7;
+
+  color: #166534;
+
+  padding: 12px;
+
+  border-radius: 8px;
+
+  margin-bottom: 16px;
+
+  font-size: 14px;
+
+
+}

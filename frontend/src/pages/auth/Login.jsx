@@ -6,45 +6,59 @@ import toast from "react-hot-toast";
 
 export default function Login() {
   const navigate = useNavigate();
+
   const { login } = useAuth();
 
-  //  Form states
+  // Form states
   const [email, setEmail] = useState("");
+
   const [password, setPassword] = useState("");
 
   const [error, setError] = useState("");
+
   const [loading, setLoading] = useState(false);
 
+  // Password visibility
   const [showPassword, setShowPassword] = useState(false);
+
+  // Remember me
   const [rememberMe, setRememberMe] = useState(false);
 
-  //  Handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setError("");
+
     setLoading(true);
 
     try {
-      const res = await api.post("/auth/login", { email, password });
+      const res = await api.post("/auth/login", {
+        email,
+        password,
+      });
 
       const { user, accessToken, refreshToken } = res.data;
 
-      //  Save tokens 
+      // Save authentication data
+
       localStorage.setItem("token", accessToken);
+
       localStorage.setItem("refreshToken", refreshToken);
+
       localStorage.setItem("user", JSON.stringify(user));
 
-      // Update auth context state
+      // Update Auth Context
+
       login(user, accessToken, refreshToken);
 
-      toast.success("Login successful ");
+      toast.success("Login successful");
 
-      //  Role-based navigation
+      // Role Based Navigation
+
       if (user.role === "employee") {
         navigate("/employee/dashboard");
-      } else if (user.role === "hr") {
-        navigate("/hr/add-employee");
+      } else if (user.role === "hr" || user.role === "admin") {
+        navigate("/hr/dashboard");
       } else {
         navigate("/");
       }
@@ -62,23 +76,26 @@ export default function Login() {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        {/*  Title */}
+        {/* Title */}
+
         <h2 className="text-2xl font-bold text-center text-blue-600 mb-6">
           HRM System - Login
         </h2>
 
-        {/*  Error Message */}
+        {/* Error Message */}
+
         {error && (
           <div className="bg-red-100 text-red-600 p-3 rounded mb-4 text-sm">
             {error}
           </div>
         )}
 
-        {/*  Form */}
         <form onSubmit={handleSubmit}>
-          {/*  Email Input */}
+          {/* Email */}
+
           <div className="mb-4">
             <label className="block text-gray-700 mb-1">Email</label>
+
             <input
               type="email"
               value={email}
@@ -89,7 +106,8 @@ export default function Login() {
             />
           </div>
 
-          {/* Password Input */}
+          {/* Password */}
+
           <div className="mb-4">
             <label className="block text-gray-700 mb-1">Password</label>
 
@@ -103,7 +121,6 @@ export default function Login() {
                 required
               />
 
-              {/*  Toggle Button */}
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
@@ -114,7 +131,8 @@ export default function Login() {
             </div>
           </div>
 
-          {/*  Remember Me */}
+          {/* Remember Me */}
+
           <div className="mb-4 flex items-center">
             <input
               type="checkbox"
@@ -125,7 +143,8 @@ export default function Login() {
             <label className="text-sm text-gray-600">Remember Me</label>
           </div>
 
-          {/* Submit Button */}
+          {/* Button */}
+
           <button
             type="submit"
             disabled={loading}
@@ -135,7 +154,8 @@ export default function Login() {
           </button>
         </form>
 
-        {/*  Register Link */}
+        {/* Register Link */}
+
         <p className="text-center text-gray-500 mt-4 text-sm">
           Don't have an account?{" "}
           <Link to="/register" className="text-blue-600 hover:underline">

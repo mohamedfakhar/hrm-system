@@ -1,53 +1,45 @@
 export default function HowItWorks() {
   const steps = [
     {
-      number: '1',
-      title: 'Create Account',
-      desc: 'Sign up with your work email and configure your company on the platform.',
-      // img: '/images/step-1.png'
+      number: "1",
+      title: "Create Account",
+      desc: "Sign up with your work email and set up your company profile effortlessly.",
     },
     {
-      number: '2',
-      title: 'Add Employees',
-      desc: 'Bulk-add your team and assign roles, departments, and salaries.',
-      // img: '/images/step-2.png'
+      number: "2",
+      title: "Add Employees",
+      desc: "Bulk upload employee data or send invite links to your team members.",
     },
     {
-      number: '3',
-      title: 'Start Managing',
-      desc: 'Automate attendance, approve leaves, and run payroll from one dashboard.',
-      // img: '/images/step-3.png'
+      number: "3",
+      title: "Start Managing",
+      desc: "Automate payroll, track attendance, and manage leaves from your dashboard.",
     },
   ];
 
   return (
     <section className="how" id="how">
       <div className="section-inner">
-        <p className="section-eyebrow">Simple setup in</p>
-        <h2 className="section-title">3 easy steps</h2>
+        <h2 className="section-title">
+          Simple setup in <span>3 easy steps</span>
+        </h2>
+
         <p className="section-sub">
-          Get your entire HR operation running in minutes, not days.
+          Get your entire team up and running in minutes, not days.
         </p>
 
-        <div className="steps-grid">
-          {steps.map((step, index) => (
-            <>
-              <div className="step-card" key={step.number}>
-                <div className="step-number">{step.number}</div>
+        <div className="steps-wrapper">
+          {steps.map((step) => (
+            <div className="step-item" key={step.number}>
+              <div className="step-number">{step.number}</div>
+
+              <div className="step-content">
                 <h3>{step.title}</h3>
                 <p>{step.desc}</p>
-                {/* IMAGE PLACEHOLDER: step screenshot */}
-                {/* <img src={step.img} alt={step.title} className="step-img" /> */}
-                <div className="step-img-placeholder" />
               </div>
-              {/* Connector line between steps */}
-              {index < steps.length - 1 && (
-                <div className="step-connector" key={`connector-${index}`} />
-              )}
-            </>
+            </div>
           ))}
         </div>
-
       </div>
     </section>
   );
