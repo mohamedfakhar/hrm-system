@@ -7,7 +7,8 @@ const connectDB = require('./config/db');
 require('dotenv').config();
 
 const app = express();
-const server = http.createServer(app);        
+const server = http.createServer(app);   
+connectDB();     
 
 //  Socket.io Setup 
 const io = new Server(server, {

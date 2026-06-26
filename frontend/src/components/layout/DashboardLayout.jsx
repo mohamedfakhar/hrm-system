@@ -1,21 +1,21 @@
-import Sidebar from '../layout/Navbar/Navbar';
-import Navbar  from '../layout/Sidebar/Sidebar';
-
+import Sidebar from './Sidebar/Sidebar';
+import Navbar  from './Navbar/Navbar';
 
 export default function DashboardLayout({ children, title }) {
   return (
-    <div className="dashboard-wrapper flex min-h-screen">
+    <div className="flex min-h-screen bg-gray-50">
 
+      {/* Sidebar on the left */}
       <Sidebar />
 
-      {/* Right side */}
+      {/* Main content on the right */}
       <div className="flex-1 flex flex-col overflow-hidden">
 
         <Navbar title={title} />
 
-        <div className="flex-1 p-6 overflow-y-auto">
+        <main className="flex-1 p-6 overflow-y-auto">
           {children}
-        </div>
+        </main>
 
       </div>
     </div>

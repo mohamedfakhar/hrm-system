@@ -1,49 +1,66 @@
 .navbar {
-  background-color: #ffffff;
+  height: 60px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
   border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-.navbar-bell-btn {
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Bell */
+.notif button {
   background: none;
   border: none;
   cursor: pointer;
+  font-size: 18px;
+  position: relative;
 }
 
-.navbar-badge {
-  background-color: #ef4444;
-}
-
-.navbar-notif-dropdown {
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-notif-header {
-  border-bottom: 1px solid #f1f5f9;
-}
-
-.navbar-notif-item {
-  border-bottom: 1px solid #f8fafc;
-}
-
-.navbar-notif-dot {
-  width: 8px;
-  height: 8px;
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  background: red;
+  color: white;
+  font-size: 10px;
   border-radius: 50%;
+  padding: 2px 5px;
 }
 
-.navbar-mark-all-btn {
-  background: none;
-  border: none;
-  color: #2563eb;
-  cursor: pointer;
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background: white;
+  border: 1px solid #eee;
+  padding: 10px;
+  width: 200px;
+  border-radius: 8px;
 }
 
-.navbar-mark-all-btn:hover {
-  background-color: #f8fafc;
+/* User */
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.navbar-avatar {
-  background-color: #2563eb;
+.avatar {
+  width: 35px;
+  height: 35px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
