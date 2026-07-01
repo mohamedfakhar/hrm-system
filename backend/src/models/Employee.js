@@ -33,12 +33,12 @@ const employeeSchema = new mongoose.Schema({
     required: [true, 'Basic salary is required'],
     min:0
   },
-  annual_leave_salary: {
-    type: Number,
-    required: true,
-    min: 0,
+  annual_leave_balance: { 
+     type: Number,
+     default: 21,
+      min: 0 
+    },
 
-  },
   hire_date: {
     type: Date,
     required: true

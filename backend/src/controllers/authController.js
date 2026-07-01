@@ -24,7 +24,7 @@ const generateRefreshToken = (user) => {
 //  Save Refresh Token in DB 
 const saveRefreshToken = async (userId, token) => {
   const expiresAt = new Date();
-  expiresAt.setDate(expiresAt.getDate() + 7); 
+  expiresAt.setDate(expiresAt.getDate() + 7);
 
   await RefreshToken.create({
     user_id: userId,
@@ -36,10 +36,10 @@ const saveRefreshToken = async (userId, token) => {
 //  Set Refresh Token Cookie 
 const setRefreshCookie = (res, token) => {
   res.cookie('refreshToken', token, {
-    httpOnly: true,   
-    secure:   false,  
+    httpOnly: true,
+    secure: false,
     sameSite: 'strict',
-    maxAge:   7 * 24 * 60 * 60 * 1000 
+    maxAge: 7 * 24 * 60 * 60 * 1000
   });
 };
 
@@ -120,7 +120,7 @@ exports.login = async (req, res) => {
     await user.save();
 
     // Generate both tokens
-    const accessToken  = generateAccessToken(user);
+    const accessToken = generateAccessToken(user);
     const refreshToken = generateRefreshToken(user);
 
     // Save refresh token in DB
@@ -133,11 +133,11 @@ exports.login = async (req, res) => {
     res.json({
       success: true,
       message: 'Login successful',
-      token: accessToken,    
+      token: accessToken,
       user: {
-        id:    user._id,
+        id: user._id,
         email: user.email,
-        role:  user.role
+        role: user.role
       }
     });
 
@@ -245,7 +245,7 @@ exports.refreshToken = async (req, res) => {
       user: {
         id: user._id,
         email: user.email,
-        role:  user.role
+        role: user.role
       }
     });
 

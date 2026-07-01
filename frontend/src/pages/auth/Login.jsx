@@ -5,7 +5,14 @@ import { useAuth } from "../../context/AuthContext";
 import toast from "react-hot-toast";
 import "./Login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEye,
+  faEyeSlash,
+  faBuilding,
+  faLock,
+  faEnvelope,
+  faKey,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -46,65 +53,133 @@ export default function Login() {
   };
 
   return (
-    <div className="login-page">
-      <div className="login-card">
+    <div className="min-h-screen flex items-center justify-center bg-[#f5f8ff] p-5">
+      <div className="w-full max-w-[420px]">
         {/* Logo */}
-        <div className="login-logo">
-          <span className="login-logo-icon">🏢</span>
-          <h1 className="login-title">HRM Portal</h1>
-          <p className="login-subtitle">Sign in to your account</p>
+        <div className="flex justify-center items-center gap-2 mb-5">
+          <div className="text-blue-700 text-2xl">
+            <FontAwesomeIcon icon={faBuilding} />
+          </div>
+
+          <h1 className="text-2xl font-bold text-blue-700">HRM Portal</h1>
         </div>
 
-        {/* Error */}
-        {error && <div className="login-error">{error}</div>}
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="login-form">
-          {/* Email */}
-          <div className="form-group">
-            <label className="form-label">Email Address</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="form-input"
-              placeholder="Enter your email"
-              required
-            />
-          </div>
-
-          {/* Password */}
-          <div className="form-group">
-            <label className="form-label">Password</label>
-            <div className="password-wrapper">
-              <input
-                type={showPassword ? "text" : "password"}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="form-input password-input"
-                placeholder="Enter your password"
-                required
-              />
-              <button
-                type="button"
-                className="password-toggle"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
-              </button>
+        {/* Card */}
+        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+          {/* Header */}
+          <div className="login-header">
+            <div className="header-lock">
+              <FontAwesomeIcon icon={faLock} />
             </div>
+
+            <p>SECURE LOGIN</p>
           </div>
 
-          {/* Submit */}
-          <button type="submit" disabled={loading} className="login-btn">
-            {loading ? "Signing in..." : "Sign In"}
-          </button>
-        </form>
+          {/* Body */}
+          <div className="p-6">
+            <h2 className="text-2xl font-bold text-center text-gray-800">
+              Welcome Back
+            </h2>
 
-        {/* Back to home */}
-        <Link to="/" className="login-back-link">
-          ← Back to Home
-        </Link>
+            <p className="text-center text-sm text-gray-500 mt-2 mb-6">
+              Please enter your credentials to continue
+            </p>
+
+            {error && <div className="login-error">{error}</div>}
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Email */}
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Email Address
+                </label>
+
+                <div className="input-box">
+                  <FontAwesomeIcon icon={faEnvelope} />
+
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* Password */}
+
+              <div>
+                <div className="flex justify-between mb-2">
+                  <label className="text-sm font-medium text-gray-700">
+                    Password
+                  </label>
+
+                  <a className="text-xs text-blue-600 cursor-pointer">
+                    Forgot password?
+                  </a>
+                </div>
+
+                <div className="input-box">
+                  <FontAwesomeIcon icon={faKey} />
+
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Enter your password"
+                    required
+                  />
+
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="text-gray-400 hover:text-blue-600"
+                  >
+                    <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                  </button>
+                </div>
+              </div>
+
+              {/* Remember */}
+
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <input type="checkbox" />
+
+                <span>Remember me for 30 days</span>
+              </div>
+
+              <button
+                disabled={loading}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition"
+              >
+                {loading ? "Signing in..." : "Sign In"}
+              </button>
+            </form>
+
+            {/* Divider */}
+
+            <div className="help-divider">
+              <span></span>
+
+              <p>HELP CENTER</p>
+
+              <span></span>
+            </div>
+
+            <p className="text-center text-sm text-gray-500">
+              Don't have an account?
+              <a className="text-blue-600 ml-1 cursor-pointer">
+                Contact HR Admin
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <p className="text-center text-xs text-gray-400 mt-6">
+          SECURE ENTERPRISE ACCESS
+        </p>
       </div>
     </div>
   );

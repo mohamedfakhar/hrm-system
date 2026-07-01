@@ -1,0 +1,86 @@
+.hr-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.hr-dashboard-loading {
+  text-align: center;
+  padding: 48px;
+  color: #64748b;
+  font-size: 15px;
+}
+
+.hr-dashboard-header {
+  margin-bottom: 4px;
+}
+
+.hr-dashboard-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+}
+
+.hr-dashboard-subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Stats Grid */
+.hr-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+/* Quick Actions */
+.hr-section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 14px 0;
+}
+
+.hr-actions-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hr-action-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #1e293b;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s;
+}
+
+.hr-action-card:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+  background: #eff6ff;
+}
+
+.hr-action-card--admin {
+  border-color: #fbbf24;
+  color: #92400e;
+  background: #fffbeb;
+}
+
+.hr-action-card--admin:hover {
+  background: #fef3c7;
+  border-color: #f59e0b;
+}
+
+.hr-action-icon {
+  font-size: 18px;
+}

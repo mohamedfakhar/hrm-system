@@ -1,14 +1,14 @@
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const http = require('http');        
-const { Server } = require('socket.io');      
+const http = require('http');
+const { Server } = require('socket.io');
 const connectDB = require('./config/db');
 require('dotenv').config();
 
 const app = express();
-const server = http.createServer(app);   
-connectDB();     
+const server = http.createServer(app);
+connectDB();
 
 //  Socket.io Setup 
 const io = new Server(server, {
@@ -55,6 +55,8 @@ app.use('/api/attendance', require('./routes/attendanceRoutes'));
 app.use('/api/leaves', require('./routes/leaveRoutes'));
 app.use('/api/payroll', require('./routes/payrollRoutes'));
 app.use('/api/notifications', require('./routes/notificationRoutes'));
+app.use( '/api/dashboard', require('./routes/dashboardRoutes')
+);
 
 app.get('/', (req, res) => {
   res.json({ message: ' HRM API is running!' });
