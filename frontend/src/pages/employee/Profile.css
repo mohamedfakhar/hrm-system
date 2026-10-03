@@ -1,0 +1,149 @@
+.profile-loading {
+  text-align: center;
+  color: #94a3b8;
+  padding: 48px;
+}
+
+.profile-not-found {
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 48px;
+  text-align: center;
+  color: #64748b;
+}
+
+.profile-not-found-sub {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 8px 0 0 0;
+}
+
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+/* Avatar Card */
+.profile-avatar-card {
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.profile-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profile-avatar-info { flex: 1; }
+
+.profile-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+}
+
+.profile-role {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0 0 8px 0;
+}
+
+.profile-department-badge {
+  font-size: 11px;
+  font-weight: 600;
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.profile-code-box {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.profile-code-label {
+  font-size: 11px;
+  color: #94a3b8;
+  margin: 0 0 4px 0;
+}
+
+.profile-code-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: #2563eb;
+  margin: 0;
+}
+
+/* Info Grid */
+.profile-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .profile-info-grid { grid-template-columns: 1fr; }
+}
+
+.profile-info-card {
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.profile-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 16px 0;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid #f1f5f9;
+}
+
+.profile-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f8fafc;
+}
+
+.profile-info-row:last-child { border-bottom: none; }
+
+.profile-info-label {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.profile-info-value {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1e293b;
+  text-align: right;
+}

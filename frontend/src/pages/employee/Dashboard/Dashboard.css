@@ -1,0 +1,124 @@
+.emp-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.emp-dashboard-loading {
+  text-align: center;
+  padding: 48px;
+  color: #64748b;
+  font-size: 15px;
+}
+
+.emp-dashboard-header {
+  margin-bottom: 4px;
+}
+
+.emp-dashboard-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+}
+
+.emp-dashboard-subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0;
+}
+
+.emp-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+/* Salary Card */
+.emp-salary-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.emp-salary-label {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0 0 6px 0;
+  font-weight: 500;
+}
+
+.emp-salary-amount {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.emp-salary-status {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+.emp-salary-status--paid {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.emp-salary-status--pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* Quick Actions */
+.emp-section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 14px 0;
+}
+
+.emp-actions-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.emp-action-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #1e293b;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s;
+}
+
+.emp-action-card:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+  background: #eff6ff;
+}
+/* Chart + Table side by side */
+.emp-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .emp-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
